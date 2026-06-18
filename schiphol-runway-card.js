@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var VERSION = "1.11.0";
+  var VERSION = "0.1";
 
   // Collapsible console banner (expand to see details)
   console.groupCollapsed(
