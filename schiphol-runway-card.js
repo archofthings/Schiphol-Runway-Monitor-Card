@@ -1,7 +1,7 @@
 (function() {
   "use strict";
 
-  var VERSION = "0.1";
+  var VERSION = "1.0";
 
   // Collapsible console banner (expand to see details)
   console.groupCollapsed(
@@ -10,7 +10,8 @@
     "color:#fff;background:#3ba5ff;font-weight:700;padding:3px 8px;border-radius:0 6px 6px 0"
   );
   console.info("Live Schiphol runway usage map with peak indicators");
-  console.info("https://github.com/your-repo/schiphol-runway-card");
+  console.info("https://github.com/archofthings/ha-schiphol-runway-card");
+  console.info("https://github.com/archofthings/ha-schiphol-runway-monitor");
   console.groupEnd();
 
   // ---- Defaults (HA color tokens; every option has a default) ----
