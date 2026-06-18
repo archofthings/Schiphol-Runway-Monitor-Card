@@ -8,7 +8,7 @@ A Home Assistant **Lovelace custom card** that displays a live SVG map of all si
 
 > ⚠️ **Requires** the companion **[Schiphol Runway Monitor](https://github.com/archofthings/ha-schiphol-runway-monitor)** integration to be installed and configured first — it provides the sensors this card displays.
 
-![Card preview](docs/card-preview.png)
+![Card preview](blob/main/docs/card-preview.png)
 
 ---
 
