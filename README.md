@@ -70,7 +70,7 @@ All options are available through the visual editor and have sensible defaults, 
 | Option | Type | Default | Description |
 |--------|------|---------|-------------|
 | `title` | string | `Schiphol Runways` | Card header title |
-| `background_image` | string | _(none)_ | URL/path of a background image, e.g. `/local/schiphol.png` |
+| `background_image` | string | _(none)_ | URL/path of a background image, e.g. `/local/schiphol/schiphol_sat.png` |
 | `background_opacity` | number | `0.55` | Opacity of the background image (0-1) |
 | `inbound_color` | HA color | `green` | Color for landing runways/planes |
 | `outbound_color` | HA color | `blue` | Color for departing runways/planes |
@@ -82,7 +82,7 @@ All options are available through the visual editor and have sensible defaults, 
 ```yaml
 type: custom:schiphol-runway-card
 title: Schiphol Runways
-background_image: /local/schiphol_sat.png
+background_image: /local/schiphol/schiphol_sat.png
 background_opacity: 0.5
 inbound_color: green
 outbound_color: blue
@@ -184,5 +184,5 @@ Runway geometry and airplane sprite derived from publicly available LVNL visuali
 [release-badge]: https://img.shields.io/github/v/release/archofthings/ha-schiphol-runway-card
 [release-url]: https://github.com/archofthings/ha-schiphol-runway-card/releases
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
-[license-url]: https://github.com/archofthings/ha-schiphol-runway-card/LICENSE
+[license-url]: https://github.com/archofthings/ha-schiphol-runway-card/blob/main/LICENSE
 [integration-url]: https://github.com/archofthings/ha-schiphol-runway-monitor
