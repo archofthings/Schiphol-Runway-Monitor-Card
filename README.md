@@ -181,8 +181,8 @@ Runway geometry and airplane sprite derived from publicly available LVNL visuali
 
 [hacs-badge]: https://img.shields.io/badge/HACS-Custom-41BDF5.svg
 [hacs-url]: https://hacs.xyz
-[release-badge]: https://img.shields.io/github/v/release/your-repo/schiphol-runway-card
-[release-url]: https://github.com/your-repo/schiphol-runway-card/releases
+[release-badge]: https://img.shields.io/github/v/release/archofthings/ha-schiphol-runway-card
+[release-url]: https://github.com/archofthings/ha-schiphol-runway-card/releases
 [license-badge]: https://img.shields.io/badge/License-MIT-yellow.svg
-[license-url]: https://github.com/your-repo/schiphol-runway-card/blob/main/LICENSE
-[integration-url]: https://github.com/your-repo/schiphol-runways-ha
+[license-url]: https://github.com/archofthings/ha-schiphol-runway-card/LICENSE
+[integration-url]: https://github.com/archofthings/ha-schiphol-runway-monitor
