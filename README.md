@@ -6,9 +6,9 @@
 
 A Home Assistant **Lovelace custom card** that displays a live SVG map of all six Amsterdam Airport Schiphol (EHAM) runways, color-coded by their current status, with airplane sprites showing approach/departure direction and inbound/outbound peak indicators.
 
-> ⚠️ **Requires** the companion **[Schiphol Runway Monitor](https://github.com/your-repo/schiphol-runways-ha)** integration to be installed and configured first — it provides the sensors this card displays.
+> ⚠️ **Requires** the companion **[Schiphol Runway Monitor](https://github.com/archofthings/ha-schiphol-runway-monitor)** integration to be installed and configured first — it provides the sensors this card displays.
 
-![Card preview](docs/preview.png)
+![Card preview](docs/card-preview.png)
 
 ---
 
@@ -40,7 +40,7 @@ HACS registers the dashboard resource automatically — no manual resource step 
 
 ### Manual Installation
 
-1. Download `schiphol-runway-card.js` from the [latest release][release-url]
+1. Download `schiphol-runway-card.js` from the latest release
 2. Copy it to `/config/www/schiphol-runway-card.js`
 3. Add it as a resource: **Settings -> Dashboards -> menu -> Resources -> Add Resource**
    ```
