@@ -19,7 +19,7 @@
     inbound_color:      "green",
     outbound_color:     "blue",
     both_color:         "amber",
-    background_image:   "",
+    background_image:   "https://cdn.jsdelivr.net/gh/archofthings/ha-Schiphol-Runway-card@main/www/schiphol_sat.png",
     background_opacity: 0.55,
   };
 
