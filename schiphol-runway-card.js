@@ -18,9 +18,9 @@
     title:              "Schiphol Runways",
     inbound_color:      "green",
     outbound_color:     "blue",
-    both_color:         "amber",
     background_image:   "https://cdn.jsdelivr.net/gh/archofthings/ha-Schiphol-Runway-card@main/www/schiphol_sat.png",
     background_opacity: 0.55,
+    show_chips:         true,
   };
 
   var RUNWAYS = [
@@ -138,13 +138,11 @@
 
         var inC = colorVar(this._config.inbound_color);
         var outC = colorVar(this._config.outbound_color);
-        var bothC = colorVar(this._config.both_color);
         this._inC = inC; this._outC = outC;
         this._colors = {
-          not_in_use:           { line: "var(--disabled-text-color,#9aa5b1)", active:false, text:"not in use" },
-          inbound:              { line: inC,   active:true, text:"landing" },
-          outbound:             { line: outC,  active:true, text:"takeoff" },
-          inbound_and_outbound: { line: bothC, active:true, text:"both" },
+          not_in_use: { line: "var(--disabled-text-color,#9aa5b1)", active:false, text:"not in use" },
+          inbound:    { line: inC,  active:true, text:"landing" },
+          outbound:   { line: outC, active:true, text:"takeoff" },
         };
 
         this._rendered = false;
@@ -261,7 +259,7 @@
           +       '<line x1="0" y1="-3.4" x2="0" y2="-1" stroke="var(--secondary-text-color,#888)" stroke-width="0.6"/>'
           +     '</g>'
           +   '</svg></div>'
-          +   '<div class="chips">' + chipHTML + '</div>'
+          +   (this._config.show_chips !== false ? '<div class="chips">' + chipHTML + '</div>' : '')
           +   '<div class="peaks">'
           +     '<div class="pb" id="pb-in"><span class="pi">&#8595;</span><div class="pt"><span class="pl">Inbound peak</span><span class="pv" id="pv-in">--</span></div></div>'
           +     '<div class="pb" id="pb-out"><span class="pi">&#8593;</span><div class="pt"><span class="pl">Outbound peak</span><span class="pv" id="pv-out">--</span></div></div>'
@@ -410,27 +408,32 @@
   // Editor (ha-form with native selectors incl. ui_color)
   // ============================================================
   var SCHEMA = [
-    { name: "title",              selector: { text: {} } },
-    { name: "background_image",   selector: { text: {} } },
-    { name: "background_opacity", selector: { number: { min: 0, max: 1, step: 0.05, mode: "slider" } } },
-    { name: "inbound_color",      selector: { ui_color: {} } },
-    { name: "outbound_color",     selector: { ui_color: {} } },
-    { name: "both_color",         selector: { ui_color: {} } },
+    { name: "title",            selector: { text: {} } },
+    { name: "background_image", selector: { text: {} } },
+    { type: "grid", name: "", schema: [
+      { name: "inbound_color",  selector: { ui_color: {} } },
+      { name: "outbound_color", selector: { ui_color: {} } },
+    ]},
+    { type: "grid", name: "", schema: [
+      { name: "background_opacity", selector: { number: { min: 0, max: 1, step: 0.05, mode: "slider" } } },
+      { name: "show_chips",         selector: { boolean: {} } },
+    ]},
   ];
   RUNWAYS.forEach(function(r) {
     SCHEMA.push({ name: "e_" + r.key, selector: { entity: { domain: ["sensor", "binary_sensor"] } } });
   });
 
   var LABELS = {
-    title: "Card title",
-    background_image: "Background image URL (e.g. /local/schiphol.png)",
+    title:              "Card title",
+    background_image:   "Background image URL",
+    inbound_color:      "Landing color",
+    outbound_color:     "Takeoff color",
     background_opacity: "Background opacity",
-    inbound_color: "Inbound (landing) color",
-    outbound_color: "Outbound (takeoff) color",
-    both_color: "Both directions color",
+    show_chips:         "Show runway chips",
   };
 
   function computeLabel(schema) {
+    if (!schema.name) return "";
     if (LABELS[schema.name]) return LABELS[schema.name];
     for (var i = 0; i < RUNWAYS.length; i++) {
       if ("e_" + RUNWAYS[i].key === schema.name) {
@@ -486,12 +489,12 @@
 
       _data() {
         var d = {
-          title: this._config.title,
-          background_image: this._config.background_image,
+          title:              this._config.title,
+          background_image:   this._config.background_image,
           background_opacity: this._config.background_opacity,
-          inbound_color: this._config.inbound_color,
-          outbound_color: this._config.outbound_color,
-          both_color: this._config.both_color,
+          inbound_color:      this._config.inbound_color,
+          outbound_color:     this._config.outbound_color,
+          show_chips:         this._config.show_chips !== undefined ? this._config.show_chips : DEFAULTS.show_chips,
         };
         var ents = this._config.entities || {};
         RUNWAYS.forEach(function(r) { d["e_" + r.key] = ents[r.key] || defaultEntity(r.key); });
@@ -526,7 +529,7 @@
         if (v.background_opacity != null && v.background_opacity !== DEFAULTS.background_opacity) cfg.background_opacity = v.background_opacity;
         if (v.inbound_color && v.inbound_color !== DEFAULTS.inbound_color) cfg.inbound_color = v.inbound_color;
         if (v.outbound_color && v.outbound_color !== DEFAULTS.outbound_color) cfg.outbound_color = v.outbound_color;
-        if (v.both_color && v.both_color !== DEFAULTS.both_color) cfg.both_color = v.both_color;
+        if (v.show_chips !== undefined && v.show_chips !== DEFAULTS.show_chips) cfg.show_chips = v.show_chips;
 
         this._config = Object.assign({}, DEFAULTS, cfg);
         this.dispatchEvent(new CustomEvent("config-changed", {
