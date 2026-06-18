@@ -40,7 +40,7 @@ HACS registers the dashboard resource automatically — no manual resource step 
 
 ### Manual Installation
 
-1. Download `schiphol-runway-card.js` from the latest release
+1. Download `schiphol-runway-card.js` from the [latest release][release-url] 
 2. Copy it to `/config/www/schiphol-runway-card.js`
 3. Add it as a resource: **Settings -> Dashboards -> menu -> Resources -> Add Resource**
    ```
