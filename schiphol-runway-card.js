@@ -239,9 +239,9 @@
           + '.cnm{font-size:8px;color:var(--secondary-text-color,#727272);overflow:hidden;white-space:nowrap;text-overflow:ellipsis}'
           + '.cst{font-size:9px;font-weight:600;color:var(--secondary-text-color,#888);margin-top:2px}'
           + '.chdg{font-size:8px;font-family:monospace;color:var(--secondary-text-color,#999)}'
-          + '@container (max-width:359px){.chips{grid-template-columns:repeat(2,1fr)}.cnm,.chdg{display:none}}'
-          + '.peaks{display:flex;flex-direction:column;gap:6px;padding:0 8px 8px}'
-          + '.pb{display:flex;align-items:center;gap:6px;background:var(--secondary-background-color,#f5f5f5);'
+          + '@container (max-width:359px){.chips{grid-template-columns:repeat(2,1fr)}.cnm,.chdg{display:none}.peaks{flex-direction:column}}'
+          + '.peaks{display:flex;gap:6px;padding:0 8px 8px}'
+          + '.pb{flex:1;display:flex;align-items:center;gap:6px;background:var(--secondary-background-color,#f5f5f5);'
           +   'border:1px solid var(--divider-color,#e0e0e0);border-radius:8px;padding:6px 10px;cursor:pointer;transition:background .4s,border-color .4s}'
           + '.pb:hover{filter:brightness(1.08)}'
           + '.pi{font-size:16px;line-height:1}'
@@ -262,10 +262,12 @@
           +     '</g>'
           +   '</svg></div>'
           +   (this._config.show_chips !== false ? '<div class="chips">' + chipHTML + '</div>' : '')
-          +   '<div class="peaks">'
-          +     '<div class="pb" id="pb-in"><span class="pi">&#8595;</span><div class="pt"><span class="pl">Inbound peak</span><span class="pv" id="pv-in">--</span></div></div>'
-          +     '<div class="pb" id="pb-out"><span class="pi">&#8593;</span><div class="pt"><span class="pl">Outbound peak</span><span class="pv" id="pv-out">--</span></div></div>'
-          +   '</div>'
+          +   (this._config.show_chips !== false
+              ? '<div class="peaks">'
+              +   '<div class="pb" id="pb-in"><span class="pi">&#8595;</span><div class="pt"><span class="pl">Inbound peak</span><span class="pv" id="pv-in">--</span></div></div>'
+              +   '<div class="pb" id="pb-out"><span class="pi">&#8593;</span><div class="pt"><span class="pl">Outbound peak</span><span class="pv" id="pv-out">--</span></div></div>'
+              + '</div>'
+              : '')
           + '</div>';
 
         // Click handlers: chips + peak badges open more-info
